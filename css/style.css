@@ -1,0 +1,571 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Montserrat-Regular', Arial;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f6f6f6;
+    font-family: 'Lora, serif';
+}
+
+/* Header Start*/
+
+header {
+    background: rgb(46, 46, 46);
+    height: 66px;
+}
+
+header .logo {
+    float: left;
+    height: inherit;
+    margin-left: 2em;
+}
+
+header .logo-text {
+    margin: 8px;
+    font-family: 'Lora', serif;
+}
+
+header .logo-text span{
+    color: rgb(236, 148, 32);
+} 
+
+header ul {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    height: inherit;
+    list-style: none;
+}
+
+header ul li{
+    float: left;
+    position: relative;
+}
+
+header ul li a:hover{
+    background-color: rgb(61, 61, 61);
+    height: 66px;
+    transition: 0.3s;
+}
+
+header ul li ul{
+    position: absolute;
+    top: 66px;
+    right: 0px;
+    width: 180px;
+    display: none;
+}
+
+header ul li:hover ul{
+    display: block;
+}
+
+header ul li ul li {
+    width: 100%;
+}
+
+header ul li ul li a{
+    padding: 10px;
+    background-color: white;
+    color: gray;
+}
+
+header ul li ul li a.logout{
+    color: red;
+}
+
+header ul li ul li a:hover {
+    background-color: gainsboro;
+    transition: 0.3s;
+    height: auto;
+}
+
+header .burger a{
+    height: auto;
+}
+
+header ul li a{
+    display: block;
+    padding: 21px;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+header .menu-toggle{
+    display: none;
+}
+
+header * {
+    color: white;
+}
+
+/* Header End */
+
+/* Main Start */
+
+.main-body{
+    display: flex;
+}
+
+.main-section{
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.main-section form {
+    margin-top: 2em;
+}
+
+.main-section form input{
+    width: 30%;
+    height: 30px;
+}
+
+.main-section form label{
+    color: gray;
+}
+
+.main-section button{
+    color: white;
+    background-color:#343a40;
+    border: none;
+    height: 30px;
+}
+
+.main-section button:hover{
+    cursor: pointer;
+}
+
+.main-section h3{
+    text-align: right;
+    margin-right: 150px;
+}
+
+.main-section h3 a{
+    text-decoration: none;
+    background:rgb(46, 46, 46);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+.filtered-section h3{
+    text-align: right;
+    margin-right: 150px;
+}
+
+.filtered-section h3 a{
+    text-decoration: none;
+    background:rgb(46, 46, 46);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+aside{
+    float: left;
+    margin-top: 2em;
+    margin-left: 2em;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #f6f6f6;
+    color: gray;
+}
+
+aside ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+aside ul li a{
+    text-decoration: none;
+    color: gray;
+}
+
+aside ul li a p:hover{
+    background-color: gainsboro;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+
+aside ul li a p{
+    font-weight: bold;
+}
+
+h1{
+    font-size: 2em;
+}
+
+.back-btn{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.fa-left-long{
+    padding-top: 27px;
+}
+
+.blog-container{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.blog-box{
+    width: 450px;
+    padding: 5px;
+}
+
+.blog-box a{
+    color: black;
+    text-decoration: none;
+}
+
+.blog-box .category{
+    color:#01676b;
+}
+
+/* Main end */
+
+/* Filtered */
+
+.filtered-section{
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 314px;
+
+}
+
+/* Filtered End*/
+
+/* Create Blog Form */
+
+.post-form{
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.post-form input[type=text]{
+    width: 25%;
+}
+
+.post-form .desc{
+    width: 25%;
+    height: 10em;
+}
+
+select{
+    width: 70px;
+    margin-bottom: 5px;
+}
+
+.maincontent{
+    width: 80%;
+    height: 40em;
+    margin-top: 10px;
+}
+
+input[type=submit]{
+    width: 50px;
+    margin-top: 10px;
+}
+
+#post-header{
+    padding-left: 2em;
+}
+
+/* Create Blog Form End*/
+
+/*About*/
+
+/* Hero Start */
+
+.hero{
+    margin-top: 4em;
+    margin-bottom: 4em;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hero h1{
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 3.5em;
+}
+
+.hero span{
+    color: rgb(236, 148, 32);
+}
+
+/*About end*/
+
+/*Index Start */
+
+.acc-forms form input{
+    width: 80%;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.acc-forms form button{
+    color: white;
+    background-color:#343a40;
+    border: none;
+}
+
+.acc-forms form button:hover{
+    cursor: pointer;
+}
+
+/*Index End */
+
+/* Footer Start */
+
+.footer{
+    background: #303036;
+    color: #d3d3d3;
+    height: 400px;
+    position: relative;
+}
+
+.footer a{
+    color: #d3d3d3;
+}
+
+.footer .footer-content{
+    height: 350px;
+    display: flex;
+}
+
+.footer .footer-content .footer-section {
+    flex: 1;
+    padding: 25px;
+}
+
+.footer .footer-bottom{
+    background: #343a40;
+    color: #686868;
+    height: 50px;
+    text-align: center;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.footer-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-form input{
+    height: 40px;
+}
+
+.footer-form textarea{
+    height: 100px;
+}
+
+button{
+    width: 70px;
+    padding: 5px;
+}
+
+textarea{
+    resize: none;
+}
+
+/* Footer End */
+
+/* Cards */
+
+.card-view {
+    max-width: 40%;
+    margin-top: 4em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-view h1 {
+    font-size: 48px;
+}
+
+.content {
+    float: left;
+}
+
+/* Card end */
+
+/* Media Queries */
+
+@media only screen and (max-width: 1726px) {
+
+    .main-section{
+        max-width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 400px;
+    }
+    
+    .filtered-section{
+        max-width: 80%;
+        max-width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 400px;
+    }
+
+}
+
+@media only screen and (max-width: 1314px) {
+
+    .main-section{
+        max-width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 0px;
+    }
+
+    .filtered-section{
+        max-width: 80%;
+        max-width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 230px;
+    }
+
+    .card-view {
+        max-width: 80%;
+    }
+
+}
+
+@media only screen and (max-width: 1280px) {
+
+    .filtered-section{
+        max-width: 80%;
+        max-width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 250px;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+
+    header {
+        position: relative;
+    }
+
+    header ul {
+        width: 100%;
+        background-color: #01676b;
+        max-height: 0px;
+        overflow: hidden;
+    }
+
+    .showing {
+        max-height: 100em;
+    }
+
+    header ul li{
+        width: 100%;
+        background-color: #343a40;
+    }
+
+    header ul li ul{
+        position: static;
+        display: block;
+        width: 100%;
+    }
+
+    header ul li ul li a{
+        padding: 10px;
+        background-color: #343a40;
+        color: white;
+        padding-left: 50px;
+    }
+    
+    header ul li ul li a.logout{
+        color: red;
+    }
+
+    header .menu-toggle{
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 1.9em;
+    }
+
+    header .logo {
+        margin-left: .5em;
+    }
+
+    aside {
+        display: none;
+    }
+
+    .main-section, .filtered-section {
+        max-width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .main-section form input{
+        width: 280px;
+        height: 30px;
+    }
+
+    .links{
+        display: none;
+    }
+
+    .footer-form{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .footer-form input{
+        height: 40px;
+    }
+    
+    .footer-form textarea{
+        height: 100px;
+    }
+    
+    button{
+        width: 70px;
+        padding: 5px;
+    }
+
+    img {
+        width: 350px;
+        height: 300px;
+    }
+    
+}
