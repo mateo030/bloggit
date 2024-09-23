@@ -19,14 +19,14 @@
     </div>
 </header>
 <body>
-    <section class="hero" style="margin-top: 10em; background-color: #f6f6f6;">
-        <h1>Welcome to <span>Blogg</span>it</h1>
+    <section class="hero" style="margin-top: 10em">
+    <h1>Create an account</h1>
     <div class="acc-forms">
-        <form action="includes/user-login.php" method="post">
+        <form action="includes/user-register.php" method="post">
             <input type="text" name="name" placeholder="Username"><br>
             <input type="password" name="password" placeholder="Password"><br>
-            <button>Login</button>
-            <p>Not registered?<a href="register.php"> create an account</a></p>
+            <button>Register</button>
+            <p>Already have an account?<a href="index.php"> log in</a></p>
         </form>
     </div>
     </section>

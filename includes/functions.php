@@ -25,9 +25,7 @@ function displayFilteredCards($key)
     for ($i = 0; $i < 3; $i++) {
         $row = $rows[$i];
         echo '<div class="blog-box">';
-        echo '<img src="images/' . $row['file'] . '" height="300" width="435">';
-        echo '<p class="category">' . $row['category'] . '</p>';
-        echo '<h2><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h2>';
+        echo '<h1><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h1>';
         echo '<p>' . $row['description'] . '</p>';
         echo '<p>' . 'By ' . $row['username'] . '</p>';
         echo '</div>';
@@ -37,23 +35,24 @@ function displayFilteredCards($key)
 function displayCardView($key)
 {
     require 'includes/db.php';
-    echo '<h1>' . $key . '</h1>';
-    echo '<div class="blog-container">';
     $rows = $pdo->query('SELECT * FROM blog_posts WHERE category LIKE "' . $key .'" ORDER BY created_at DESC')->fetchAll(PDO::FETCH_ASSOC);
     $totalRows = count($rows);
 
     for ($i = 0; $i < $totalRows; $i++) {
         $row = $rows[$i];
         echo '<div class="blog-box">';
-        echo '<img src="images/' . $row['file'] . '" height="300" width="435">';
-        echo '<p class="category">' . $row['category'] . '</p>';
-        echo '<h2><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h2>';
-        echo '<p>' . $row['description'] . '</p>';
-        echo '<p>' . 'By ' . $row['username'] . '</p>';
+        echo    '<img src="images/' . $row['file'] . '">';
+        echo    '<div class="blog-box-text">';
+        echo        '<h1><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h1>';
+        echo        '<p>' . $row['description'] . '</p>';
+        echo        '<div class="blog-box-bottom">';
+        echo            '<p class="blog-box-username">' . 'By ' . $row['username'] . '</p>';
+        echo            '<i class="fa-regular fa-calendar"></i>';
+        echo            '<p class="blog-box-date">' . $row['created_at'] . '</p>';
+        echo        '</div>';
+        echo    '</div>';
         echo '</div>';
     }
-
-    echo '</div>';
 }
 
 function dd($value) {

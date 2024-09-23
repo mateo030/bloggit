@@ -15,10 +15,8 @@ require 'includes/functions.php';
     <!-- Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Candal&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
-
-<body></body>
 <header>
     <div class="logo">
         <h1 class="logo-text"><span>Blogg</span>it</h1>
@@ -26,7 +24,6 @@ require 'includes/functions.php';
     <i class="fa fa-bars menu-toggle"></i>
     <ul class="nav">
         <li><a href="home.php">Home</a></li>
-        <li><a href="about.php">About</a></li>
         <li>
             <a href="#">
                 <i class="fa fa-user" style="color: rgb(236, 148, 32);"></i>
@@ -40,6 +37,7 @@ require 'includes/functions.php';
                 ?>
             </a>
             <ul>
+                <li><a href="user-profile.php">Profile</a></li>
                 <li><a href="create.php">Create a blog</a></li>
                 <li><a href="includes/logout.php" class="logout">Logout</a></li>
             </ul>
