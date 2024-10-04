@@ -19,7 +19,7 @@
     </div>
 </header>
 <body>
-    <section class="hero" style="margin-top: 10em">
+    <section class="hero" style="margin-top: 10em; background-color: #f6f6f6;">
     <h1>Create an account</h1>
     <div class="acc-forms">
         <form action="includes/user-register.php" method="post">

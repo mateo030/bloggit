@@ -20,7 +20,7 @@
 </header>
 <body>
     <section class="hero" style="margin-top: 10em; background-color: #f6f6f6;">
-        <h1>Welcome to <span>Blogg</span>it</h1>
+        <h1>Welcome to <span style="color: rgb(236, 148, 32)">Blogg</span>it</h1>
     <div class="acc-forms">
         <form action="includes/user-login.php" method="post">
             <input type="text" name="name" placeholder="Username"><br>

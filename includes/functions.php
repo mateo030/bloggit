@@ -5,37 +5,36 @@ function displayCards()
     require 'db.php';
     $rows = $pdo->query('SELECT * FROM blog_posts ORDER BY id DESC')->fetchAll(PDO::FETCH_ASSOC);
 
-    for ($i = 0; $i < 6; $i++) {
+    for ($i = 0; $i < 7; $i++) {
         $row = $rows[$i];
         echo '<div class="blog-box">';
-        echo '<img src="images/' . $row['file'] . '" height="300" width="435">';
-        echo '<p class="category">' . $row['category'] . '</p>';
-        echo '<h2><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h2>';
-        echo '<p>' . $row['description'] . '</p>';
-        echo '<p>' . 'By ' . $row['username'] . '</p>';
+        echo    '<img src="images/' . $row['file'] . '">';
+        echo    '<div class="blog-box-text">';
+        echo        '<h1><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h1>';
+        echo        '<p>' . $row['description'] . '</p>';
+        echo        '<div class="blog-box-bottom">';
+        echo            '<p class="blog-box-username">' . 'By ' . $row['username'] . '</p>';
+        echo            '<i class="fa-regular fa-calendar"></i>';
+        echo            '<p class="blog-box-date">' . $row['created_at'] . '</p>';
+        echo        '</div>';
+        echo    '</div>';
         echo '</div>';
     }
 }
 
-function displayFilteredCards($key)
+function returnPostCount($key)
 {
     require 'db.php';
-    $rows = $pdo->query('SELECT * FROM blog_posts WHERE category LIKE "' . $key . '" ORDER BY created_at DESC ')->fetchAll(PDO::FETCH_ASSOC);
-
-    for ($i = 0; $i < 3; $i++) {
-        $row = $rows[$i];
-        echo '<div class="blog-box">';
-        echo '<h1><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h1>';
-        echo '<p>' . $row['description'] . '</p>';
-        echo '<p>' . 'By ' . $row['username'] . '</p>';
-        echo '</div>';
-    }
+    $stmt = $pdo->prepare('SELECT * FROM blog_posts WHERE category LIKE :key');
+    $stmt->execute(['key' => '%' . $key . '%']);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return count($rows);
 }
 
 function displayCardView($key)
 {
     require 'includes/db.php';
-    $rows = $pdo->query('SELECT * FROM blog_posts WHERE category LIKE "' . $key .'" ORDER BY created_at DESC')->fetchAll(PDO::FETCH_ASSOC);
+    $rows = $pdo->query('SELECT * FROM blog_posts WHERE category LIKE "' . $key . '" ORDER BY created_at DESC')->fetchAll(PDO::FETCH_ASSOC);
     $totalRows = count($rows);
 
     for ($i = 0; $i < $totalRows; $i++) {
@@ -55,17 +54,19 @@ function displayCardView($key)
     }
 }
 
-function dd($value) {
+function dd($value)
+{
     echo '<pre>';
     var_dump($value);
     echo '</pre>';
 }
 
-function displayTitle($server) {
+function displayTitle($server)
+{
     $uri = $server;
     if ($uri === '/bloggit/') {
         echo '<title>Welcome to Bloggit</title>';
-    } else if ($uri === '/bloggit/home.php'){
+    } else if ($uri === '/bloggit/home.php') {
         echo '<title>Home | Bloggit</title>';
     } else if ($uri === '/bloggit/latest.php') {
         echo '<title>Latest | Bloggit</title>';
@@ -98,4 +99,14 @@ function displayTitle($server) {
     }
 }
 
-
+function displayPosterProfile($id)
+{
+    require 'db.php';
+    $stmt = $pdo->prepare('SELECT * FROM blog_posts INNER JOIN users ON blog_posts.username=users.username WHERE blog_posts.id = :blog_id');
+    $stmt->bindParam(':blog_id', $id);
+    $stmt->execute();
+    $rows = $stmt->fetchAll();
+    foreach ($rows as $row) {
+        echo $row['user_picture'];
+    }
+}

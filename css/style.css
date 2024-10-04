@@ -11,11 +11,10 @@ body {
 }
 
 h1 {
-    font-family: 'Merriweather';
     font-size: 24px;
 }
 
-p , a{
+p , a, li{
     font-size: 16px;
     font-family: Arial;
 }
@@ -132,7 +131,7 @@ header * {
     justify-content: center;
     text-align: center;
     gap: 1em;
-    background-color: #dadada;
+    background-color: #ececec;
     padding-top: 4em;
     padding-bottom: 4em;
 }
@@ -158,25 +157,46 @@ header * {
 
 /* Home */
 
-.category {
+.home-article {
     display: flex;
-    flex-direction: row;
-    gap: 6em;
     justify-content: center;
+    margin-top: 4em;
+    gap: 4em;
+}
+
+.category {
+    gap: 6em;
+    justify-content: space-evenly;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.selected {
+    border: 2px solid rgb(49, 49, 49);
 }
 
 .category-block {
-    background-color: rgb(46, 46, 46);
-    color: #f6f6f6;
+    color: rgb(46, 46, 46);
+    border: 2px solid rgb(211, 211, 211);
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 2em;
     padding: 20px;
-    width: 300px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 17em;
+    height: 80px;
+    transition: 0.2s;
+}
+
+.category-block h1 {
+    font-size: 20px;
 }
 
 .category-block:hover {
-    background-color: rgb(61, 61, 61);
+    border: 2px solid rgb(49, 49, 49);
+    transition: 0.2s;
 }
 
 .category-icon i {
@@ -187,24 +207,25 @@ header * {
 
 /* Main Start */
 
-.main-section {
-    max-width: 80%;
-    margin: 0 auto;
-}
 
 .top {
     background-color: rgb(46, 46, 46);
     color: #f6f6f6;
     padding: 10px;
-    margin-top: 4em;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     gap: 10px;
+    border-radius: 5px;
 }
 
 .top i {
     margin: auto 0;
     font-size: 24px;
+}
+
+.main {
+    width: 80%;
 }
 
 .blog-box {
@@ -253,14 +274,19 @@ header * {
 
 .post-form{
     max-width: 80%;
-    margin: 0 auto;
+    margin: 2em auto;
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;
 }
 
+label {
+    font-weight: bold;
+}
+
 .post-form input[type=text]{
     width: 25%;
+    height: 40px;
 }
 
 .post-form .desc{
@@ -268,9 +294,23 @@ header * {
     height: 10em;
 }
 
+.post-form button {
+    border: none;
+    padding: 15px 20px;
+}
+
+
+.post-form button:hover {
+    cursor: pointer;
+}
+
 select{
     width: 70px;
     margin-bottom: 5px;
+}
+
+textarea {
+    resize: none;
 }
 
 .maincontent{
@@ -436,7 +476,7 @@ input[type=submit]{
 }
 
 .add-comment-button {
-    margin: auto 0 0 0;
+    margin: auto 0 0 10px;
 }
 
 .add-comment form button {
@@ -448,22 +488,41 @@ input[type=submit]{
     width: 14em;
 }
 
+.add-comment form button:hover {
+    background: rgb(65, 65, 65);
+    cursor: pointer;
+}
+
 /* Post view end */
 
 /* User profile START */
 
-.user-block {
-    width: 40%;
-    margin: 12em auto auto auto;
+.user-card {
+    background-color: #2e2e2e;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    height: 40em;
+    width: 30em;
+    gap: 2em;
+    padding: 1.5em;
+    margin: 6em auto 0 auto; 
 }
 
-.user-card {
-    background-color: #dadada;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 8em;
-    padding: 1.5em;
+.user-icon {
+    margin: 0 auto;
+}
+
+.user-icon form input {
+    color: white;
+}
+
+.user-icon form button {
+    margin-top: 10px;
+    border: none;
+    background-color: rgb(236, 148, 32);
+    padding: 10px;
+    color: #f6f6f6
 }
 
 .user-icon img {
@@ -472,7 +531,19 @@ input[type=submit]{
     object-fit: cover;
 }
 
+.user-info {
+    color: #f6f6f6;
+}
+
 /* User profile END*/
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    margin-top: 4em;
+    margin-bottom: 4em;
+}
 
 /* Media Queries */
 
@@ -483,7 +554,7 @@ input[type=submit]{
         display: flex;
         justify-content: center;
         flex-direction: column;
-        margin-left: 400px;
+        margin: 0 auto;
     }
     
     .filtered-section{
@@ -504,7 +575,7 @@ input[type=submit]{
         display: flex;
         justify-content: center;
         flex-direction: column;
-        margin-left: 0px;
+        margin: 0 auto;
     }
 
     .filtered-section{
@@ -628,6 +699,12 @@ input[type=submit]{
     img {
         width: 350px;
         height: 300px;
+    }
+
+    /* Index Form */
+
+    .acc-forms button {
+        margin: 0 auto;
     }
     
 }

@@ -25,7 +25,7 @@ function fetchUserReplies($blog_id) {
             echo '<div class="reply-card">';
             echo    '<div class="reply-card-header">';
             echo        '<div class="reply-userprofile">';
-            echo            '<img src="images/icon/' . $row['user_picture'] . '">';
+            echo            '<img src="images/userpics/' . $row['user_picture'] . '">';
             echo            '<p>' . $row['username'] . '</p>';
             echo        '</div>';
             echo    '</div>';

@@ -15,7 +15,7 @@ $post = $stmt->fetch();
             </div>
             <div class="wall-block-header">
                 <div class="original-poster-img">
-                    <img src="images/icon/defaultuser.png">       
+                    <img src="images/userpics/<?php displayPosterProfile($id)?>">              
                 </div>
                 <div class="original-poster-info">
                     <p><?php echo $post['username'] ?></p>
