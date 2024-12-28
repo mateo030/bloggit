@@ -27,7 +27,7 @@ $post = $stmt->fetch();
                     <p><?php echo $post['created_at'] ?></p>
                 </div>
                 <div class="wall-img">
-                    <img src="images/<?php echo $post['file']?>">
+                    <img src="images/thumbnails/<?php echo $post['file']?>">
                 </div>
                 <div class="wall-text">
                     <p><?php echo $post['content'] ?></p>

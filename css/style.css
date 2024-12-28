@@ -509,6 +509,11 @@ input[type=submit]{
     margin: 6em auto 0 auto; 
 }
 
+.user-card-container {
+    display: flex;
+    align-items: center;
+}
+
 .user-icon {
     margin: 0 auto;
 }
@@ -536,6 +541,12 @@ input[type=submit]{
 }
 
 /* User profile END*/
+
+/* Errors */
+
+.errors {
+    color: rgb(207, 2, 2);
+}
 
 /* FOOTER */
 

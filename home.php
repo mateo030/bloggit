@@ -1,5 +1,7 @@
-<?php require 'includes/db.php' ?>
-<?php require 'includes/header.php' ?>
+<?php 
+require 'includes/db.php';
+require 'includes/header.php';
+?>
 
 <body>
     <?php require 'hero.php' ?>

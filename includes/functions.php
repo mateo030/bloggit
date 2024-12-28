@@ -8,7 +8,7 @@ function displayCards()
     for ($i = 0; $i < 7; $i++) {
         $row = $rows[$i];
         echo '<div class="blog-box">';
-        echo    '<img src="images/' . $row['file'] . '">';
+        echo    '<img src="images/thumbnails/' . $row['file'] . '">';
         echo    '<div class="blog-box-text">';
         echo        '<h1><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h1>';
         echo        '<p>' . $row['description'] . '</p>';
@@ -40,7 +40,7 @@ function displayCardView($key)
     for ($i = 0; $i < $totalRows; $i++) {
         $row = $rows[$i];
         echo '<div class="blog-box">';
-        echo    '<img src="images/' . $row['file'] . '">';
+        echo    '<img src="images/thumbnails/' . $row['file'] . '">';
         echo    '<div class="blog-box-text">';
         echo        '<h1><a href="view.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h1>';
         echo        '<p>' . $row['description'] . '</p>';

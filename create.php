@@ -14,7 +14,7 @@
 </head>
 <?php include 'includes/header.php'?>
 <body>
-    <form action="includes/formhandler.php" method="POST" class="post-form" enctype="multipart/form-data">
+    <form action="includes/formhandler.php" enctype="multipart/form-data" method="POST" class="post-form">
         <h1>Bloggit!</h1>
         <label>Title</label>
         <input type="text" name="title" required>
@@ -32,7 +32,7 @@
             <option value="Other">Other</option>
         </select>
         <label>Thumbnail</label>
-        <input type="file" name="file" accept="image/jpeg, image/png, image/jpg" required>
+        <input type="file" name="blog_image" accept="image/jpeg, image/png, image/jpg" required>
         <textarea name="content" class="maincontent"></textarea>
         <div>
             <button style="color: white; background-color: #343a40; margin-top: 10px">Post</button>

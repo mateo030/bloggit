@@ -10,29 +10,32 @@ function fetchUserReplies($blog_id) {
     foreach ($result as $row) {
 
         if ($row['user_picture'] == null) {
-            echo '<div class="reply-card">';
-            echo    '<div class="reply-card-header">';
-            echo        '<div class="reply-userprofile">';
-            echo            '<img src="images/icon/defaultuser.png">';
-            echo            '<p>' . $row['username'] . '</p>';
-            echo        '</div>';
-            echo    '</div>';
-            echo    '<div class="reply-card-content">';
-            echo        '<p>' . $row['content'] . '</p>';
-            echo    '</div>';
-            echo '</div>';
+            ?> <div class="reply-card">
+                    <div class="reply-card-header">
+                        <div class="reply-userprofile">
+                            <img src="images/icon/defaultuser.png">
+                            <p><?= $row['username'] ?></p>
+                        </div>
+                    </div>
+                    <div class="reply-card-content">
+                        <p><?= $row['content'] ?></p>
+                    </div>
+                </div>
+            <?php
         } else {
-            echo '<div class="reply-card">';
-            echo    '<div class="reply-card-header">';
-            echo        '<div class="reply-userprofile">';
-            echo            '<img src="images/userpics/' . $row['user_picture'] . '">';
-            echo            '<p>' . $row['username'] . '</p>';
-            echo        '</div>';
-            echo    '</div>';
-            echo    '<div class="reply-card-content">';
-            echo        '<p>' . $row['content'] . '</p>';
-            echo    '</div>';
-            echo '</div>';
+            ?>
+                <div class="reply-card">
+                    <div class="reply-card-header">
+                        <div class="reply-userprofile">
+                        <img src="images/userpics/' . $row['user_picture'] . '">
+                        <p><?= $row['username'] ?></p>
+                        </div>
+                    </div>
+                    <div class="reply-card-content">
+                        <p> <?= $row['content'] ?></p>
+                    </div>
+                </div>
+            <?php
         }
     }
 }

@@ -15,12 +15,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         try {
             require_once "db.php";
     
-            $query = "INSERT INTO users (username, password) VALUES (:username, :password);";
+            $query = "INSERT INTO users (username, pwd) VALUES (:username, :pwd);";
     
             $stmt = $pdo->prepare($query);
     
             $stmt->bindParam(":username", $name);
-            $stmt->bindParam(":password", $password);
+            $stmt->bindParam(":pwd", $password);
     
             $stmt->execute();
     

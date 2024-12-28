@@ -3,6 +3,7 @@ require 'includes/db.php';
 require 'includes/header.php';
 ?>
 <body>
+<?= $_SESSION['user_id']?>
     <div class="user-card">
         <div class="user-icon">
             <?php
@@ -12,9 +13,21 @@ require 'includes/header.php';
                 echo '<img src="images/userpics/' . $_SESSION['user_picture'] . '">';
             }
             ?>
-        <form action="includes/update-userpic.php" method="POST">
+        <form action="includes/update-userpic.php" enctype="multipart/form-data" method="POST">
             <input type="file" name="user_picture"><br>
-            <button>Change Profile</button>
+            <div class="user-card-container">
+                <button>Change Profile</button>
+                <?php 
+                    if (isset($_SESSION["errors"]) && !empty($_SESSION["errors"])) {
+                        ?>
+                        <div class="errors">
+                            <p><?= $_SESSION["errors"][0] ?></p>
+                        </div>
+                        <?php
+                        unset($_SESSION["errors"]);
+                    }
+                ?>
+            </div>
         </form>
         </div>
         <div class="user-info">

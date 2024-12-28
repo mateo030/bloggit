@@ -1,22 +1,67 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    session_start();
-    $username = $_SESSION["user"];
-    $title = $_POST["title"];
-    $description = $_POST["description"];
-    $category = $_POST["category"];
-    $content = $_POST["content"];
-    $uploadDir = '../images/';
-    $uploadFile = $uploadDir . basename($_FILES['file']['name']);
-    $file = $_FILES['file']['name'];
+session_start();
 
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
-        echo "The file has been uploaded successfully.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    
+    $username = $_SESSION["user"];
+    $title = htmlspecialchars($_POST["title"]);
+    $description = htmlspecialchars($_POST["description"]);
+    $category = htmlspecialchars($_POST["category"]);
+    $content = htmlspecialchars($_POST["content"]);
+
+    //FILE HANDLERS
+
+    $_SESSION["errors"];
+    
+    if ($_FILES["blog_image"]["error"] !== UPLOAD_ERR_OK) {
+        switch ($_FILES["blog_image"]["error"]) {
+            case UPLOAD_ERR_PARTIAL:
+                array_push($_SESSION["errors"], "File only partially uploaded.");
+                break;
+            case UPLOAD_ERR_NO_FILE:
+                array_push($_SESSION["errors"], "No file was uploaded.");
+                break;
+            case UPLOAD_ERR_EXTENSION:
+                array_push($_SESSION["errors"], "File upload stopped by php extension.");
+                break;
+            case UPLOAD_ERR_FORM_SIZE:
+                array_push($_SESSION["errors"], "File exceeds max size.");
+            case UPLOAD_ERR_NO_TMP_DIR:
+                array_push($_SESSION["errors"], "Temporary folder not found.");
+            case UPLOAD_ERR_CANT_WRITE:
+                array_push($_SESSION["errors"], "Failed to write file.");
+            default:
+                array_push($_SESSION["errors"], "Unknown upload error.");
+        }
+    }
+    
+    if ($_FILES["blog_image"]["size"] > 1048576) {
+        array_push($_SESSION["errors"], "File too large (max 1MB)");
+    }
+    
+    if(isset($_SESSION["errors"])) {
+        header("Location: ../create.php");
     }
 
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime_type = $finfo->file($_FILES["blog_image"]["tmp_name"]);
+    $mime_types = ["image/png", "image/jpeg"];
+
+    if (!in_array($_FILES["blog_image"]["type"], $mime_types)) {
+        array_push($_SESSION["errors"], "Invalid file type.");
+    }
+
+    if(isset($_SESSION["errors"])) {
+        header("Location: ../create.php");
+    }
+
+    //UPLOADS FILE IF NO ERRORS ARE FOUND
+    $filename = $_FILES["blog_image"]["name"];
+    $destination = "../images/thumbnails/" . $filename;
+    if (!move_uploaded_file($_FILES["blog_image"]["tmp_name"], $destination)) {
+        array_push($_SESSION["errors"], "Can't move file");
+    }
 
     try {
         require_once "db.php";
@@ -24,18 +69,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $query = "INSERT INTO blog_posts (title, description, category, username, content, file) VALUES (:title, :description, :category, :username, :content, :file);";
 
         $stmt = $pdo->prepare($query);
-        if(move_uploaded_file($temp_name, $folder)){
-            echo 'File uploaded successfuly';
-        } else {
-            echo 'There was an error';
-        }
 
         $stmt->bindParam(":username", $username);
         $stmt->bindParam(":title", $title);
         $stmt->bindParam(":description", $description);
         $stmt->bindParam(":category", $category);
         $stmt->bindParam(":content", $content);
-        $stmt->bindParam(":file", $file);
+        $stmt->bindParam(":file", $filename);
 
         $stmt->execute();
 
@@ -51,4 +91,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 } else{
     header("Location: ../home.php");
+    exit();
 }
