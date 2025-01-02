@@ -5,8 +5,7 @@ function displayCards()
     require 'db.php';
     $rows = $pdo->query('SELECT * FROM blog_posts ORDER BY id DESC')->fetchAll(PDO::FETCH_ASSOC);
 
-    for ($i = 0; $i < 7; $i++) {
-        $row = $rows[$i];
+    foreach ($rows as $row) {
         echo '<div class="blog-box">';
         echo    '<img src="images/thumbnails/' . $row['file'] . '">';
         echo    '<div class="blog-box-text">';
